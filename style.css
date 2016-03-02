@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.outer {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+h1 {
+    font-weight: 600;
+    color: tomato;
+    font-size: 3em;
+    font-family: sans-serif;
+}
