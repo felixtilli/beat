@@ -2,6 +2,21 @@ var beats = [];
 var bpm = 0;
 var ms = 0;
 var hasBeenInitialized;
+var context = new AudioContext();
+
+function loadBeat() {
+    var request = new XMLHttpRequest();
+    request.open("GET", "/beat.mp3", true);
+    request.responseType = "arraybuffer";
+
+    request.onload = function() {
+        context.decodeAudioData(request.response, function(buffer) {
+            beatBuffer = buffer;
+        });
+    }
+    request.send();
+}
+loadBeat();
 
 var addBeat = function(){
     var previousBeat = beats.slice(-1)[0];
@@ -37,8 +52,10 @@ var setSpeed = function(){
 
 var playBeat = function(){
     setTimeout(function(){
-        var beat = new Audio('/beat.mp3');
-        beat.play();
+        var source = context.createBufferSource();
+        source.buffer = beatBuffer;
+        source.connect(context.destination);
+        source.start(0);
         playBeat();
     }, ms);
 }
