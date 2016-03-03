@@ -43,9 +43,9 @@ var setSpeed = function(){
     
     var calculatedBpm = Math.round(60000 * beats.length / total);
 
-    if(isFinite(calculatedBpm) && calculatedBpm > 10){
+    if(isFinite(calculatedBpm)){
         ms = (total / beats.length);
-        bpm = Math.round(60000 * beats.length / total);
+        bpm = calculatedBpm;
         document.getElementById("bpm").innerHTML = bpm.toString() + " BPM";
     }
 }
