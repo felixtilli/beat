@@ -4,6 +4,7 @@
     var ms = 0;
     var hasBeenInitialized;
     var context = new AudioContext();
+    var beatBuffer;
 
     function loadBeat() {
         var request = new XMLHttpRequest();
